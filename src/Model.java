@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.util.List;
 import java.io.IOException;
 import java.io.FileReader; 
 
@@ -38,7 +39,7 @@ public class Model
 //	
 //	}
 	
-	private void inventory(list<Book> inventoryOfBooks){
+	private void inventory(List<Book> inventoryOfBooks){
 		
 	}
 	
@@ -54,7 +55,8 @@ public class Model
 		
 	}
 	
-	private void computeTotalPrice(){
+	private double computeTotalPrice(){
+		return 0;
 		
 	}
 	
@@ -66,5 +68,7 @@ public class Model
 		
 	}
 	
-	public list<Book> getBooks(Category category)
+	public List<Book> getBooks(Category category){
+		
+	}
 }
