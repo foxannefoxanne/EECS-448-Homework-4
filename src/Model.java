@@ -5,6 +5,7 @@ import java.io.FileReader;
 
 public class Model 
 {
+	
 //	static String[] textData; 
 //		
 //	public void loadData(String testFile) 
@@ -39,13 +40,10 @@ public class Model
 //	
 //	}
 	
-	private void inventory(List<Book> inventoryOfBooks){
-		
-	}
-	
-	private void cart(Cart theCart){
-		
-	}
+	private Category sciFiBooks;
+	private Category travelBooks;
+	private Category computerScienceBooks;
+	private Cart theCart;
 	
 	public void addToCart(Book book){
 		
