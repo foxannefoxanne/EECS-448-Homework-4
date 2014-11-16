@@ -12,5 +12,6 @@ public class Cart {
 	
 	public void addBook(Book book){
 		bookList.add(book);
+		totalPrice += book.price;
 	}
 }
