@@ -1,5 +1,5 @@
-import java.awt.event.ActionEvent; 
-import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
 
@@ -14,30 +14,61 @@ public class Controller {
 	
 	public void control()
 	{
-		// run it all here
+		// start by displaying menu
+		processMenu();
 	}
 	
-	public void processMenuSelection()
+	public void processMenu()
+	{
+		int menuSelection = 0;
+		while (menuSelection != 3)
+		{
+			List<String> menuOptions = new ArrayList<String>();
+			menuOptions.add("1. View books" );
+			menuOptions.add("2. View cart");
+			menuOptions.add("3. Exit");
+			menuOptions.add("Please select an option: ");
+			menuSelection = m_view.displayMenu(menuOptions);
+			
+			switch (menuSelection) {
+			case 1: 
+				processCategory();
+				break;
+			case 2:
+				processCart();
+				break;
+			case 3:
+				return;
+			}
+		}
+	}
+	
+	public void processCategory()
+	{
+		List<String> categoryNames = m_model.getCategories();
+		
+		int selection = m_view.displayCategories(categoryNames);
+		
+		// if they choose to exit
+		if (selection == 0) {
+			return;
+		}
+		
+		processBookSelection(categoryNames.get(selection - 1));
+	}
+	
+	public void processBookSelection(String categoryName)
+	{
+		List<Book> books = m_model.getBooks(categoryName);
+		
+	}
+	
+	public void processCart()
 	{
 		
 	}
 	
-	public void processCategorySelection()
-	{
-		
-	}
-	
-	public void processBookSelection()
-	{
-		
-	}
-	
-	public void processCartSelection()
-	{
-		
-	}
-	
-	public void processRemoveOptionSelection()
+	public void processRemoveOption()
 	{
 		
 	}
