@@ -96,14 +96,14 @@ public class View {
 //	
 	  int displayMenu(List<String> options)
 	  {
-
+		  //might modify for less hardcoded lines of books. 
 		  System.out.println("Please make a selection: ");
 		  System.out.println(options.get(0));
 		  System.out.println(options.get(1));
 		  System.out.println(options.get(2));
 		  
 		    int input = scanner.nextInt();
-
+		    System.out.println("\n"); 
 		  return input; //selectMainMenu(); 
 	  }
 	  
@@ -115,7 +115,14 @@ public class View {
 	  {
 		  // strings in list will ONLY be category names (not numbers)
 		  // include option to return to main menu by entering 0
-		  return 0; 
+		  System.out.println("Select a category:");
+		  for(int i = 0; i <= categoryNames.size(); i++)
+		  {
+			  System.out.println(categoryNames.get(i)); 
+		  }
+		  int input = scanner.nextInt();
+		    System.out.println("\n"); 
+		  return input; 
 	  }
 	  
 	  /*
