@@ -19,4 +19,9 @@ public class Cart {
 		bookList.add(book);
 		totalPrice += book.getPrice();
 	}
+	
+	public void removeBook(Book book) {
+		bookList.remove(book);
+		totalPrice -= book.getPrice();
+	}
 }
