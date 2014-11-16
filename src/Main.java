@@ -6,7 +6,7 @@ public class Main {
 	{ 
 		
 		Model bookStoreModel = new Model();
-		// TODO: read in each category from text file to Model's categories
+		fileRead(bookStoreModel);
 		
 		View bookStoreView = new View();
 		
@@ -15,4 +15,10 @@ public class Main {
        
 	}
 	
+	public static void fileRead(Model model)
+	{
+		// Do file reading shit here
+	}
 }
+
+
