@@ -2,38 +2,43 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Controller {
-	//order instance if empty new order
-	//use some of the stuff from before
 
-	  static Model sciFiList = new Model(); 
-	  static Model travelList = new Model();
-	  static Model softwareList = new Model(); 
-	 
+	private Model m_model;
+	private View m_view;
 	  
-	public void createBookstore()
+	public Controller(Model model, View view)
 	{
-		 
-		  String sciFi = new String("scifi.txt") ;
-		  sciFiList.loadData(sciFi); 
-		
-		  String travel = new String("travelbooks.txt") ;
-		  travelList.loadData(travel); 
-		  
-		  String software = new String("softwarebooks.txt") ;
-		  softwareList.loadData(software); 
-		  
-		  goToBookStore();
+		m_model = model;
+		m_view = view;
 	}
-	 public void goToBookStore()
+	
+	public void control()
 	{
-		 View v = new View("Books"); 
-		//options: 
-			//add books -> database
-			//view books -> view? 
-			//delete books ->database
-			//compute cost ->database
+		// run it all here
+	}
+	
+	public void processMenuSelection()
+	{
 		
 	}
 	
-
+	public void processCategorySelection()
+	{
+		
+	}
+	
+	public void processBookSelection()
+	{
+		
+	}
+	
+	public void processCartSelection()
+	{
+		
+	}
+	
+	public void processRemoveOptionSelection()
+	{
+		
+	}
 }
