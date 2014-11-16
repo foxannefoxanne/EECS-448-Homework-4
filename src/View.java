@@ -115,7 +115,8 @@ public class View {
 	  {
 		  // strings in list will ONLY be category names (not numbers)
 		  // include option to return to main menu by entering 0
-		  System.out.println("Select a category:");
+		  System.out.println("Select a category or press 0 to retun to main menu:");
+		  System.out.println("0. Return to main menu"); 
 		  for(int i = 0; i <= categoryNames.size(); i++)
 		  {
 			  System.out.println(categoryNames.get(i)); 
@@ -132,7 +133,16 @@ public class View {
 	  int displayBooks(List<Book> books)
 	  {
 		  // will only pass in a list of books, so format as needed
-		  return 0;
+		  System.out.println("Select a book or press 0 to return to main menu:");
+		  System.out.println("0. Return to main menu"); 
+		  for(int i = 0; i <= books.size(); i++)
+		  {
+			  System.out.println(books.get(i)); 
+		  }
+		  int input = scanner.nextInt();
+		    System.out.println("\n"); 
+		  return input; 
+
 	  }
 	  
 	  /*
