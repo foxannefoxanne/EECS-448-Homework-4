@@ -8,6 +8,7 @@ public class Model
 	private Category computerScienceBooks;
 	private Cart cart;
 	
+	// should we initialize the names of the categories here as well?
 	public Model(){
 		cart = new Cart();
 		sciFiBooks = new Category();
@@ -43,6 +44,11 @@ public class Model
 		}
 	}
 	
+	// return books from all categories (i.e. all of inventory)
+	public List<Book> getAllBooks() {
+		return null;
+	}
+	
 	public List<Book> getBooks(String categoryName){
 		switch(categoryName){
 		case "Science Fiction":
@@ -56,6 +62,7 @@ public class Model
 		}
 	}
 	
+	// do we maybe want to pull these names from the categories themselves?
 	public List<String> getCategoryNames() {
 		List<String> categoryNames =  new ArrayList<String>();
 		categoryNames.add("Science Fiction");

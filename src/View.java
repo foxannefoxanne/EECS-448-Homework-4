@@ -164,9 +164,17 @@ public class View {
 	  }
 	  
 	  /*
+	   * Display message that check out was successful, etc.
+	   */
+	  public void displayCheckOutMessage()
+	  {
+		  
+	  }
+	  
+	  /*
 	   * Displays message that option selected was invalid
 	   */
-	  public void displayOutOfBoundsError() 
+	  public void displayInvalidSelection() 
 	  {
 		  
 	  }

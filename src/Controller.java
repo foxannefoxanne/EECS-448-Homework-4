@@ -15,32 +15,37 @@ public class Controller {
 	public void control()
 	{
 		// start by displaying menu
-		
 		processMenu();
-		
 	}
 	
 	public void processMenu()
 	{
 		int menuSelection = 0;
-		while (menuSelection != 3)
-		{
-			
+		while (menuSelection != 4) {
 			List<String> menuOptions = new ArrayList<String>();
-			menuOptions.add("1. View books" );
-			menuOptions.add("2. View cart");
-			menuOptions.add("3. Exit");
+			menuOptions.add("1. View all books");
+			menuOptions.add("2. View books by category");
+			menuOptions.add("3. View cart");
+			menuOptions.add("4. Exit");
 			menuOptions.add("Please select an option: ");
 			menuSelection = m_view.displayMenu(menuOptions);
 			switch (menuSelection) {
-			case 1: 
+			case 1:
+				processAllBooks();
+				break;
+			case 2: 
 				processCategory();
 				break;
-			case 2:
-				processCart();
-				break;
 			case 3:
-				return;
+				if (processCart()) {
+					// done with menu, exit
+					menuSelection = 4;
+				}
+				break;
+			case 4:
+				break;
+			default:
+				m_view.displayInvalidSelection();
 			}
 		}
 	}
@@ -58,11 +63,31 @@ public class Controller {
 		
 		// if selection is invalid
 		if (selection > categoryNames.size()) {
-			m_view.displayOutOfBoundsError();
+			m_view.displayInvalidSelection();
 			return;
 		}
 		
 		processBookSelection(categoryNames.get(selection - 1));
+	}
+	
+	public void processAllBooks() 
+	{
+		List<Book> books = m_model.getAllBooks();
+		int selection = m_view.displayBooks(books);
+		
+		// if they choose to exit
+		if (selection == 0) {
+			return;
+		}
+		
+		// if selection is invalid
+		if (selection > books.size()) {
+			m_view.displayInvalidSelection();
+			return;
+		}
+		
+		m_model.addToCart(books.get(selection - 1));
+		m_view.displaySuccessfullyAdded();
 	}
 	
 	public void processBookSelection(String categoryName)
@@ -77,7 +102,7 @@ public class Controller {
 		
 		// if selection is invalid
 		if (selection > books.size()) {
-			m_view.displayOutOfBoundsError();
+			m_view.displayInvalidSelection();
 			return;
 		}
 		
@@ -85,7 +110,7 @@ public class Controller {
 		m_view.displaySuccessfullyAdded();
 	}
 	
-	public void processCart()
+	public boolean processCart()
 	{
 		List<String> options = new ArrayList<String>();
 		options.add("1. Check out");
@@ -96,14 +121,17 @@ public class Controller {
 		
 		switch (selection) {
 		case 1: 
-			// TODO: figure out what to to do next
-			break;
+			m_view.displayCheckOutMessage();
+			return true;
 		case 2:
 			processRemoveOption();
-			break;
+			return false;
 		case 3:
 			processMenu();
-			break;
+			return false;
+		default:
+			m_view.displayInvalidSelection();
+			return(processCart());
 		}
 	}
 	
@@ -119,7 +147,7 @@ public class Controller {
 		
 		// if the selection is invalid
 		if (selection > cart.getBooks().size()) {
-			m_view.displayOutOfBoundsError();
+			m_view.displayInvalidSelection();
 			return;
 		}
 		
