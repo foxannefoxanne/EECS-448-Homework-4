@@ -66,8 +66,13 @@ public class Model
 		
 	}
 	
-	public List<Book> getBooks(Category category){
+	public List<Book> getBooks(String categoryName){
 		return null;
 		
+	}
+	
+	public List<String> getCategoryNames() {
+		// return all model categories in a list
+		return null;
 	}
 }
