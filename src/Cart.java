@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
@@ -9,10 +10,15 @@ public class Cart {
 	public Cart() 
 	{
 		totalPrice = 0;
+		bookList = new ArrayList<Book>();
 	}
 	
 	public List<Book> getBooks(){
 		return bookList;
+	}
+	
+	public double getTotalPrice() {
+		return totalPrice;
 	}
 	
 	public void addBook(Book book){

@@ -1,84 +1,70 @@
-import java.io.BufferedReader;
+import java.util.ArrayList;
 import java.util.List;
-import java.io.IOException;
-import java.io.FileReader; 
 
 public class Model 
 {
-	
-//	static String[] textData; 
-//		
-//	public void loadData(String testFile) 
-//		{
-//				boolean fileNotFound = true; 
-//				try
-//				{
-//				
-//				FileReader fr = new FileReader(testFile); 
-//				BufferedReader textReader = new BufferedReader(fr); 
-//				
-//				int numberOfLines = 60; 
-//				textData = new String[numberOfLines];
-//				
-//				for(int i = 0; i < numberOfLines; i++)
-//				{	
-//					fileNotFound = false; 
-//					textData[i] = textReader.readLine();
-//				}
-//				
-//				textReader.close();
-//				if(fileNotFound) {
-//				throw new IOException(); 
-//				} 
-//				} catch (IOException e) {
-//					System.out.println("File not found."); 
-//				}
-//		}
-//		
-//	public void printData() 
-//	{
-//	
-//	}
-	
 	private Category sciFiBooks;
 	private Category travelBooks;
 	private Category computerScienceBooks;
-	private Cart theCart;
+	private Cart cart;
+	
+	public Model(){
+		cart = new Cart();
+		sciFiBooks = new Category();
+		sciFiBooks.setCategoryPrice(50);
+		travelBooks = new Category();
+		travelBooks.setCategoryPrice(40);
+		computerScienceBooks = new Category();
+		computerScienceBooks.setCategoryPrice(100);
+		
+	}
 	
 	public void addToCart(Book book){
-		
+		cart.addBook(book);
 	}
 	
 	public void removeFromCart(Book book){
-		
+		cart.removeBook(book);
 	}
 	
-	// don't think we need this now since the cart updates the price as books are added/removed
-	private double computeTotalPrice(){
-		return 0;
-		
+	private double getTotalPrice(){
+		return cart.getTotalPrice();
 	}
 	
 	public void addToInventory(Book book){
-		
-	}
-	
-	// may not actually need this?
-	public void removeFromInventory(Book book){
-		
+		String category = book.getCategory();
+		switch(category){
+		case "Science Fiction":
+			sciFiBooks.addBook(book);
+		case "Travel" :
+			travelBooks.addBook(book);
+		case "Computer Science":
+			computerScienceBooks.addBook(book);
+		}
 	}
 	
 	public List<Book> getBooks(String categoryName){
-		return null;
-		
+		switch(categoryName){
+		case "Science Fiction":
+			return sciFiBooks.getBooks();
+		case "Travel" :
+			return travelBooks.getBooks();
+		case "Computer Science":
+			return computerScienceBooks.getBooks();
+		default:
+			return null;
+		}
 	}
 	
 	public List<String> getCategoryNames() {
-		// return all model categories in a list
-		return null;
+		List<String> categoryNames =  new ArrayList<String>();
+		categoryNames.add("Science Fiction");
+		categoryNames.add("Travel");
+		categoryNames.add("Computer Science");
+		return categoryNames;
 	}
 	
 	public Cart getCart() {
-		return null;
+		return cart;
 	}
 }
