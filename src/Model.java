@@ -53,6 +53,7 @@ public class Model
 		
 	}
 	
+	// don't think we need this now since the cart updates the price as books are added/removed
 	private double computeTotalPrice(){
 		return 0;
 		
@@ -62,6 +63,7 @@ public class Model
 		
 	}
 	
+	// may not actually need this?
 	public void removeFromInventory(Book book){
 		
 	}
@@ -73,6 +75,10 @@ public class Model
 	
 	public List<String> getCategoryNames() {
 		// return all model categories in a list
+		return null;
+	}
+	
+	public Cart getCart() {
 		return null;
 	}
 }

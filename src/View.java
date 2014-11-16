@@ -54,6 +54,10 @@ public class View {
 		  return 0; 
 	  }
 	  
+	  /*
+	   * @return: number of category selected (i.e. 1 for first category listed)
+	   * 			or 0 to return to main menu
+	   */
 	  int displayCategories(List<String> categoryNames)
 	  {
 		  // strings in list will ONLY be category names (not numbers)
@@ -61,18 +65,47 @@ public class View {
 		  return 0; 
 	  }
 	  
+	  /*
+	   * @return: number of book selected (i.e. 1 for first book listed)
+	   * 			or 0 to return to main menu
+	   */
 	  int displayBooks(List<Book> books)
 	  {
+		  // will only pass in a list of books, so format as needed
 		  return 0;
 	  }
 	  
-	  int cart(Cart items)
+	  /*
+	   * @param items: Cart that contains list of books plus the total price
+	   * @param options: List of options for how to proceed (check out, remove item, return to main menu)
+	   */
+	  int displayCart(Cart items, List<String> options)
 	  {
 		  return 45; 
 	  }
 	  
-	  int RemoveOption()
+	  /*
+	   * Display cart and prompt for which item to remove
+	   * @return int: either item number in cart (i.e. 1 for first item) or 0 to cancel
+	   */
+	  int removeOption(Cart items)
 	  {
 		  return 333; 
+	  }
+	  
+	  /*
+	   * Displays message that option selected was invalid
+	   */
+	  public void displayOutOfBoundsError() 
+	  {
+		  
+	  }
+	  
+	  /*
+	   * Displays message that book was successfully added to cart
+	   */
+	  public void displaySuccessfullyAdded()
+	  {
+		  
 	  }
 	}
