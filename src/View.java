@@ -1,5 +1,6 @@
 import javax.swing.*; 
 import java.awt.BorderLayout; 
+import java.util.List;
 
 public class View {
 
@@ -48,22 +49,24 @@ public class View {
 //	      p.add(b);
 //	      g.add(b);
 //	   }
-	  int displayMenu()
+	  int displayMenu(List<String> options)
 	  {
 		  return 0; 
 	  }
 	  
-	  int displayCategories()
+	  int displayCategories(List<String> categoryNames)
 	  {
+		  // strings in list will ONLY be category names (not numbers)
+		  // include option to return to main menu by entering 0
 		  return 0; 
 	  }
 	  
-	  int displayBooks()
+	  int displayBooks(List<Book> books)
 	  {
 		  return 0;
 	  }
 	  
-	  int cart()
+	  int cart(Cart items)
 	  {
 		  return 45; 
 	  }
