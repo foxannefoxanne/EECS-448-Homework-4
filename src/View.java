@@ -1,35 +1,44 @@
-import javax.swing.*; 
-import java.awt.BorderLayout; 
+//import javax.swing.*; 
+//import java.awt.*;
+//import java.awt.event.*;
+//
+//import java.awt.BorderLayout; 
+//import java.util.List;
+//import java.awt.GridLayout;
+//
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Scanner;
+
 
 public class View {
+    Scanner scanner = new Scanner( System.in );
 
+	
 //	private JFrame frame; 
 //	private JLabel label;
 //	private JButton button; 
 //	ButtonGroup starter = null;
-//
-//	public View(String text)
+//	 	
+//	public View()
 //	{
 //		frame = new JFrame("View"); 
 //		frame.getContentPane().setLayout(new BorderLayout()); 
 //		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-//		frame.setSize(200,200);
+//		frame.setSize(500,500);
 //		frame.setVisible(true);
 //		 
-//		label = new JLabel(text); 
+//	 	label = new JLabel(""); 
 //		frame.getContentPane().add(label, BorderLayout.CENTER);
 //	      starter = new ButtonGroup();
 //	      JPanel p = new JPanel();
-//	   
-//	      addOption(p,starter,"View Books ");
-//	      addOption(p,starter,"Order Books");
-//	      addOption(p,starter,"Remove Books");
-//	      addOption(p,starter,"View Order" );
+//	  
 //	      frame.add(p);
 //
-//		button = new JButton("Select"); 
-//		frame.getContentPane().add(button, BorderLayout.SOUTH);
+//		//button = new JButton("Select"); 		
+//	      //frame.getContentPane().add(button, BorderLayout.SOUTH);
 //		
 //	}
 //	
@@ -43,15 +52,59 @@ public class View {
 //		label.setText(text); 
 //	}
 //	
-//	 public void addOption(JPanel p, ButtonGroup g, String t) {
-//	      JRadioButton b = new JRadioButton(t);
-//	      b.setActionCommand(t);
-//	      p.add(b);
-//	      g.add(b);
-//	   }
+//	public int selectMainMenu(List<String> options)
+//	{
+//		 
+//		int selectedInt = 3; 
+//		JPanel mainMenu = new JPanel();
+//	    final ButtonGroup mainGroup = new ButtonGroup();
+//	    JRadioButton radioButton;
+//	    Container c = frame.getContentPane();
+//
+//	    
+//	    frame.setLayout(new BoxLayout(c,BoxLayout.Y_AXIS));
+//
+//	    c.add(radioButton = new JRadioButton(options.get(0)));
+//	    radioButton.setActionCommand("1");
+//	    c.add(radioButton);
+//	    c.add(radioButton = new JRadioButton(options.get(1)));
+//	    radioButton.setActionCommand("2");
+//	    mainGroup.add(radioButton);
+//	    c.add(radioButton = new JRadioButton(options.get(2)));
+//	    radioButton.setActionCommand("3");
+//	    c.add(radioButton);
+//
+//
+//	    JPanel selectionPanel = new JPanel();
+//	    JButton selectButton = new JButton("Select");
+//	    c.add(selectButton);
+//	    
+//	    frame.setLayout(new BoxLayout(c,BoxLayout.Y_AXIS));
+//	    //frame.setLayout(new GridLayout(1, 3));
+//	  
+//	    
+//	    frame.add(mainMenu);
+//	    
+//	    frame.add(selectionPanel);
+//	 
+//	  
+//	
+//	   
+//		return selectedInt; 
+//	}
+//
+//	
 	  int displayMenu(List<String> options)
 	  {
-		  return 0; 
+
+		  System.out.println("Please make a selection: ");
+		  System.out.println(options.get(0));
+		  System.out.println(options.get(1));
+		  System.out.println(options.get(2));
+		  
+		    int input = scanner.nextInt();
+
+		  return input; //selectMainMenu(); 
 	  }
 	  
 	  /*

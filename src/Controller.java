@@ -15,7 +15,9 @@ public class Controller {
 	public void control()
 	{
 		// start by displaying menu
+		
 		processMenu();
+		
 	}
 	
 	public void processMenu()
@@ -23,13 +25,13 @@ public class Controller {
 		int menuSelection = 0;
 		while (menuSelection != 3)
 		{
+			
 			List<String> menuOptions = new ArrayList<String>();
 			menuOptions.add("1. View books" );
 			menuOptions.add("2. View cart");
 			menuOptions.add("3. Exit");
 			menuOptions.add("Please select an option: ");
 			menuSelection = m_view.displayMenu(menuOptions);
-			
 			switch (menuSelection) {
 			case 1: 
 				processCategory();
