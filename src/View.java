@@ -194,7 +194,9 @@ public class View {
 	  {
 		  System.out.println("Please select an item to remove: ");
 		  System.out.println("Number  Title                                      Author            Category           Price");
+		  // maybe print this at the end of the list?
 		  System.out.println("0. Return to main menu");
+		  // check for empty cart?
 		  for(int i = 0; i < items.getBooks().size(); i++)
 		  {
 			  String title = items.getBooks().get(i).getTitle();

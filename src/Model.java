@@ -8,7 +8,7 @@ public class Model
 	private Category computerScienceBooks;
 	private Cart cart;
 	
-	// should we initialize the names of the categories here as well?
+	// should we initialize the names of the categories here?
 	public Model(){
 		cart = new Cart();
 		sciFiBooks = new Category();
@@ -62,7 +62,7 @@ public class Model
 		}
 	}
 	
-	// do we maybe want to pull these names from the categories themselves?
+	//maybe pull these names from the categories themselves?
 	public List<String> getCategoryNames() {
 		List<String> categoryNames =  new ArrayList<String>();
 		categoryNames.add("Science Fiction");

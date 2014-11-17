@@ -171,7 +171,7 @@ public class Controller {
 	
 		// if the selection is invalid, 
 		while ((selection > cart.getBooks().size()) || selection < 0) {
-			seleciton = m_view.displayInvalidSelection();
+			selection = m_view.displayInvalidSelection();
 		}
 		
 		// if they want to cancel removal
