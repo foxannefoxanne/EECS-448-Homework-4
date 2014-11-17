@@ -223,9 +223,13 @@ public class View {
 	  /*
 	   * Displays message that option selected was invalid
 	   */
-	  public void displayInvalidSelection() 
+	  public int displayInvalidSelection() 
 	  {
 		  System.out.println("Please enter one of the numbers listed above.");
+
+		  int input = scanner.nextInt();
+		    System.out.println("\n"); 
+		  return input; 
 	  }
 	  
 	  /*
