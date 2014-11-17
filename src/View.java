@@ -97,11 +97,11 @@ public class View {
 	  int displayMenu(List<String> options)
 	  {
 		  //might modify for less hardcoded lines of books. 
-		  System.out.println("Please make a selection: ");
-		  System.out.println(options.get(0));
-		  System.out.println(options.get(1));
-		  System.out.println(options.get(2));
-		  
+		  for(int i = 0; i < options.size(); i++)
+		  {
+			  int j = i + 1; 
+			  System.out.println(options.get(i));
+		  }
 		    int input = scanner.nextInt();
 		    System.out.println("\n"); 
 		  return input; //selectMainMenu(); 
@@ -133,12 +133,19 @@ public class View {
 	   */
 	  int displayBooks(List<Book> books)
 	  {
-		  // will only pass in a list of books, so format as needed
+		  // will only pass in a list of books, so format as needed (need to ensure spacing is ok)
 		  System.out.println("Select a book or press 0 to return to main menu:");
-		  System.out.println("0. Return to main menu"); 
+		  System.out.println("Number  Title                                      Author            Category           Price");
+		  System.out.println("0.      Return to main menu"); 
 		  for(int i = 0; i < books.size(); i++)
 		  {
-			  System.out.println(books.get(i)); 
+			  String title = books.get(i).getTitle();
+			  String author = books.get(i).getAuthor();
+			  double price = books.get(i).getPrice();
+			  String category = books.get(i).getCategory();
+			  int j = i + 1; 
+			  
+			  System.out.println(j + ".      " + title + "  " + author + "  " + category + "  " + price); 
 		  }
 		  int input = scanner.nextInt();
 		    System.out.println("\n"); 
@@ -184,6 +191,11 @@ public class View {
 	   * Displays message that book was successfully added to cart
 	   */
 	  public void displaySuccessfullyAdded()
+	  {
+		  
+	  }
+	  
+	  public void displayOutOfBoundsError() 
 	  {
 		  
 	  }
