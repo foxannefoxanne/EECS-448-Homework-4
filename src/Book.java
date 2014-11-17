@@ -3,7 +3,7 @@ public class Book {
 	private String title;
 	private String author;
 	private double price;
-	private String category; //???
+	private String category; 
 	
 	public String getTitle(){
 		return title;

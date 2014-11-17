@@ -8,6 +8,8 @@ public class Main {
 		Model bookStoreModel = new Model();
 		try {
 			fileRead(bookStoreModel, "scifi.txt", "Science Fiction", 50);
+			fileRead(bookStoreModel, "travelbooks.txt", "Travel", 40);
+			fileRead(bookStoreModel, "softwarebooks.txt", "Computer Science", 100);
 		}
 		catch(IOException e) {
 			System.out.println(e.getMessage());
@@ -39,6 +41,9 @@ public class Main {
 			// set other fields
 			bookToEnter.setCategory(category);
 			bookToEnter.setPrice(price);
+			
+			// add book to inventory
+			model.addToInventory(bookToEnter);
 		}
 		
 		reader.close();
