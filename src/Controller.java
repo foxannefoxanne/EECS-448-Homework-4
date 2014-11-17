@@ -5,22 +5,34 @@ public class Controller {
 
 	private Model m_model;
 	private View m_view;
-	  
+
+	/*
+	 * Constructor
+	 * @param model: model constroller will connect with
+	 * @param view: view controller will connect with
+	 */
 	public Controller(Model model, View view)
 	{
 		m_model = model;
 		m_view = view;
 	}
 	
+	/*
+	 * Starting point for controller
+	 */
 	public void control()
 	{
 		// start by displaying menu
 		processMenu();
 	}
 	
+	/*
+	 * Tells view to display menu and processes menu selection
+	 */
 	public void processMenu()
 	{
 		int menuSelection = 0;
+		// menu will redisplay until check out is complete or user selects exit
 		while (menuSelection != 4) {
 			List<String> menuOptions = new ArrayList<String>();
 			menuOptions.add("1. View all books");
@@ -50,6 +62,10 @@ public class Controller {
 		}
 	}
 	
+	/*
+	 * Gets categories from model, tells view to display categories,
+	 * and processes category selection
+	 */
 	public void processCategory()
 	{
 		List<String> categoryNames = m_model.getCategoryNames();
@@ -70,6 +86,10 @@ public class Controller {
 		processBookSelection(categoryNames.get(selection - 1));
 	}
 	
+	/*
+	 * Gets all books from model, tells view to display books,
+	 * and processes book selection
+	 */
 	public void processAllBooks() 
 	{
 		List<Book> books = m_model.getAllBooks();
@@ -90,6 +110,10 @@ public class Controller {
 		m_view.displaySuccessfullyAdded();
 	}
 	
+	/*
+	 * Gets books of specificed category from model, passes
+	 * them to viewer, and processes user selection
+	 */
 	public void processBookSelection(String categoryName)
 	{
 		List<Book> books = m_model.getBooks(categoryName);
@@ -110,6 +134,10 @@ public class Controller {
 		m_view.displaySuccessfullyAdded();
 	}
 	
+	/*
+	 * Gets cart from model, passes it to viewer,
+	 * and processes cart selection
+	 */
 	public boolean processCart()
 	{
 		List<String> options = new ArrayList<String>();
@@ -135,6 +163,10 @@ public class Controller {
 		}
 	}
 	
+	/*
+	 * Gets cart from model, passes it to viewer, and 
+	 * processes removal selection
+	 */
 	public void processRemoveOption()
 	{
 		Cart cart = m_model.getCart();
