@@ -217,7 +217,7 @@ public class View {
 	   */
 	  public void displayCheckOutMessage()
 	  {
-		  
+		  System.out.println("Thank you for shopping with us today! Your payment is being processed!"); 
 	  }
 	  
 	  /*
@@ -225,7 +225,7 @@ public class View {
 	   */
 	  public void displayInvalidSelection() 
 	  {
-		  
+		  System.out.println("Please enter one of the numbers listed above.");
 	  }
 	  
 	  /*
@@ -233,11 +233,8 @@ public class View {
 	   */
 	  public void displaySuccessfullyAdded()
 	  {
-		  
+		  System.out.println("Book added to cart"); 
 	  }
 	  
-	  public void displayOutOfBoundsError() 
-	  {
-		  
-	  }
+	  
 	}
