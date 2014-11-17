@@ -71,15 +71,14 @@ public class Controller {
 		List<String> categoryNames = m_model.getCategoryNames();
 		
 		int selection = m_view.displayCategories(categoryNames);
+
+		// if selection is invalid
+		while ((selection > categoryNames.size()) || (selection < 0)) {
+			selection = m_view.displayInvalidSelection();
+		}
 		
 		// if they choose to exit
 		if (selection == 0) {
-			return;
-		}
-		
-		// if selection is invalid
-		if (selection > categoryNames.size()) {
-			m_view.displayInvalidSelection();
 			return;
 		}
 		
@@ -95,14 +94,13 @@ public class Controller {
 		List<Book> books = m_model.getAllBooks();
 		int selection = m_view.displayBooks(books);
 		
-		// if they choose to exit
-		if (selection == 0) {
-			return;
+		// if selection is invalid
+		while ((selection > books.size()) || (selection < 0)) {
+			selection = m_view.displayInvalidSelection();
 		}
 		
-		// if selection is invalid
-		if (selection > books.size()) {
-			m_view.displayInvalidSelection();
+		// if they choose to exit
+		if (selection == 0) {
 			return;
 		}
 		
@@ -118,15 +116,14 @@ public class Controller {
 	{
 		List<Book> books = m_model.getBooks(categoryName);
 		int selection = m_view.displayBooks(books);
+
+		// if selection is invalid
+		while ((selection > books.size()) || (selection < 0)) {
+			selection = m_view.displayInvalidSelection();
+		}
 		
 		// if they choose to exit
 		if (selection == 0) {
-			return;
-		}
-		
-		// if selection is invalid
-		if (selection > books.size()) {
-			m_view.displayInvalidSelection();
 			return;
 		}
 		
@@ -171,15 +168,14 @@ public class Controller {
 	{
 		Cart cart = m_model.getCart();
 		int selection = m_view.removeOption(cart);
+	
+		// if the selection is invalid, 
+		while ((selection > cart.getBooks().size()) || selection < 0) {
+			seleciton = m_view.displayInvalidSelection();
+		}
 		
 		// if they want to cancel removal
 		if (selection == 0) {
-			return;
-		}
-		
-		// if the selection is invalid
-		if (selection > cart.getBooks().size()) {
-			m_view.displayInvalidSelection();
 			return;
 		}
 		
