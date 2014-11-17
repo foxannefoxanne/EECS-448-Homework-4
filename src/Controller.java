@@ -23,6 +23,7 @@ public class Controller {
 	public void control()
 	{
 		// start by displaying menu
+		m_view.welcomeMessage();
 		processMenu();
 	}
 	

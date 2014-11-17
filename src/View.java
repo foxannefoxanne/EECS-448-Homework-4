@@ -214,6 +214,11 @@ public class View {
 		// TODO Auto-generated method stub
 		
 	  }
+
+	  public void welcomeMessage() {
+		// TODO Auto-generated method stub
+		
+	  }
 	  
 	  
 	}
