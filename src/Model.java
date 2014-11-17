@@ -12,10 +12,13 @@ public class Model
 	public Model(){
 		cart = new Cart();
 		sciFiBooks = new Category();
-		sciFiBooks.setCategoryPrice(50);
+		sciFiBooks.setName("Science Fiction");
+		sciFiBooks.setCategoryPrice(50);		
 		travelBooks = new Category();
+		travelBooks.setName("Travel");
 		travelBooks.setCategoryPrice(40);
 		computerScienceBooks = new Category();
+		computerScienceBooks.setName("Computer Science");
 		computerScienceBooks.setCategoryPrice(100);
 		
 	}
@@ -37,16 +40,23 @@ public class Model
 		switch(category){
 		case "Science Fiction":
 			sciFiBooks.addBook(book);
+			break;
 		case "Travel" :
 			travelBooks.addBook(book);
+			break;
 		case "Computer Science":
 			computerScienceBooks.addBook(book);
+			break;
 		}
 	}
 	
 	// return books from all categories (i.e. all of inventory)
 	public List<Book> getAllBooks() {
-		return null;
+		List<Book> allBooks = new ArrayList<Book>();
+		allBooks.addAll(sciFiBooks.getBooks());
+		allBooks.addAll(travelBooks.getBooks());		
+		allBooks.addAll(computerScienceBooks.getBooks());
+		return allBooks;
 	}
 	
 	public List<Book> getBooks(String categoryName){
@@ -62,12 +72,11 @@ public class Model
 		}
 	}
 	
-	//maybe pull these names from the categories themselves?
 	public List<String> getCategoryNames() {
 		List<String> categoryNames =  new ArrayList<String>();
-		categoryNames.add("Science Fiction");
-		categoryNames.add("Travel");
-		categoryNames.add("Computer Science");
+		categoryNames.add(sciFiBooks.getName());
+		categoryNames.add(travelBooks.getName());
+		categoryNames.add(computerScienceBooks.getName());
 		return categoryNames;
 	}
 	

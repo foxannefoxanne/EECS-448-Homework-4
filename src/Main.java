@@ -8,7 +8,10 @@ public class Main {
 		Model bookStoreModel = new Model();
 		try {
 			fileRead(bookStoreModel, "scifi.txt", "Science Fiction", 50);
+			//bookStoreModel.getBooks("Science Fiction");
 			fileRead(bookStoreModel, "travelbooks.txt", "Travel", 40);
+			//bookStoreModel.getBooks("Science Fiction");
+			//bookStoreModel.getBooks("Travel");
 			fileRead(bookStoreModel, "softwarebooks.txt", "Computer Science", 100);
 		}
 		catch(IOException e) {

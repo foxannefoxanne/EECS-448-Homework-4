@@ -197,25 +197,9 @@ public class View {
 	  /*
 	   * Displays message that option selected was invalid
 	   */
-	  public int displayInvalidSelection() 
+	  public void displayInvalidSelection() 
 	  {
-		  int input = -1;
-
-		  System.out.println("Please enter one of the numbers listed above.");
-
-		  try
-		  {
-		  	input = scanner.nextInt();
-		    System.out.println("\n"); 
-		  
-		  }
-		  catch(InputMismatchException exception)
-		  {
-
-			  scanner.next();
-			  	input = -1; 
-		  }
-		  return input; 
+		  System.out.println("Please enter one of the numbers listed."); 
 	  }
 	  
 	  /*
@@ -224,6 +208,11 @@ public class View {
 	  public void displaySuccessfullyAdded()
 	  {
 		  System.out.println("Book added to cart"); 
+	  }
+
+	  public void displaySuccessfullyRemoved() {
+		// TODO Auto-generated method stub
+		
 	  }
 	  
 	  

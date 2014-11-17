@@ -24,10 +24,7 @@ Tom DeMarco
 Peopleware: Productive Projects and Teams
 9.
 Frederick P. Brooks
-The Mythical Man
--
-Month,
-Anniversary Edition
+The Mythical Man-Month,Anniversary Edition
 10.
 Martin Fowler
 Refactoring: Improving the Design of Existing Code

@@ -8,7 +8,7 @@ public class Controller {
 
 	/*
 	 * Constructor
-	 * @param model: model constroller will connect with
+	 * @param model: model controller will connect with
 	 * @param view: view controller will connect with
 	 */
 	public Controller(Model model, View view)
@@ -74,8 +74,10 @@ public class Controller {
 		int selection = m_view.displayCategories(categoryNames);
 
 		// if selection is invalid
-		while ((selection > categoryNames.size()) || (selection < 0)) {
-			selection = m_view.displayInvalidSelection();
+		if ((selection > categoryNames.size()) || (selection < 0)) {
+			m_view.displayInvalidSelection();
+			processCategory();
+			return;
 		}
 		
 		// if they choose to exit
@@ -96,8 +98,10 @@ public class Controller {
 		int selection = m_view.displayBooks(books);
 		
 		// if selection is invalid
-		while ((selection > books.size()) || (selection < 0)) {
-			selection = m_view.displayInvalidSelection();
+		if ((selection > books.size()) || (selection < 0)) {
+			m_view.displayInvalidSelection();
+			processAllBooks();
+			return;
 		}
 		
 		// if they choose to exit
@@ -110,7 +114,7 @@ public class Controller {
 	}
 	
 	/*
-	 * Gets books of specificed category from model, passes
+	 * Gets books of specified category from model, passes
 	 * them to viewer, and processes user selection
 	 */
 	public void processBookSelection(String categoryName)
@@ -119,8 +123,10 @@ public class Controller {
 		int selection = m_view.displayBooks(books);
 
 		// if selection is invalid
-		while ((selection > books.size()) || (selection < 0)) {
-			selection = m_view.displayInvalidSelection();
+		if ((selection > books.size()) || (selection < 0)) {
+			m_view.displayInvalidSelection();
+			processBookSelection(categoryName);
+			return;
 		}
 		
 		// if they choose to exit
@@ -135,6 +141,7 @@ public class Controller {
 	/*
 	 * Gets cart from model, passes it to viewer,
 	 * and processes cart selection
+	 * @return: True if check out is complete, false if check out not complete
 	 */
 	public boolean processCart()
 	{
@@ -171,8 +178,9 @@ public class Controller {
 		int selection = m_view.removeOption(cart);
 	
 		// if the selection is invalid, 
-		while ((selection > cart.getBooks().size()) || selection < 0) {
-			selection = m_view.displayInvalidSelection();
+		if ((selection > cart.getBooks().size()) || selection < 0) {
+			m_view.displayInvalidSelection();
+			processRemoveOption();
 		}
 		
 		// if they want to cancel removal
@@ -181,7 +189,7 @@ public class Controller {
 		}
 		
 		m_model.removeFromCart(cart.getBooks().get(selection - 1)); 
-		m_view.displaySuccessfullyAdded();
+		m_view.displaySuccessfullyRemoved();
 			
 	}
 }
