@@ -1,23 +1,49 @@
-
-
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Main {
 	public static void main (String[] args) 
 	{ 
-		
 		Model bookStoreModel = new Model();
-		fileRead(bookStoreModel);
+		try {
+			fileRead(bookStoreModel, "scifi.txt", "Science Fiction", 50);
+		}
+		catch(IOException e) {
+			System.out.println(e.getMessage());
+		}
 		
 		View bookStoreView = new View();
 		
         Controller bookStoreController = new Controller(bookStoreModel, bookStoreView);
         bookStoreController.control();
-       
 	}
 	
-	public static void fileRead(Model model)
+	public static void fileRead(Model model, String filePath, String category, double price) throws IOException
 	{
-		// Do file reading shit here
+		FileReader fin = new FileReader(filePath);
+		BufferedReader reader = new BufferedReader(fin);
+		
+		String line = null;
+		while ((line = reader.readLine()) != null) {
+			Book bookToEnter = new Book();
+			
+			// get author
+			line = reader.readLine();
+			bookToEnter.setAuthor(line);
+			
+			// get title
+			line = reader.readLine();
+			bookToEnter.setTitle(line);
+			
+			// set other fields
+			bookToEnter.setCategory(category);
+			bookToEnter.setPrice(price);
+		}
+		
+		reader.close();
+		fin.close();
+		
 	}
 }
 
