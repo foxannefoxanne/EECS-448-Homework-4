@@ -41,6 +41,7 @@ public class Controller {
 			menuOptions.add("4. Exit");
 			menuOptions.add("Please select an option: ");
 			menuSelection = m_view.displayMenu(menuOptions);
+			
 			switch (menuSelection) {
 			case 1:
 				processAllBooks();
