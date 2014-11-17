@@ -159,7 +159,31 @@ public class View {
 	   */
 	  int displayCart(Cart items, List<String> options)
 	  {
-		  return 45; 
+		 
+		  System.out.println("Please review your shopping cart:");
+		  System.out.println("Total Amount Owed: " + items.getTotalPrice());
+		  System.out.println("Number  Title                                      Author            Category           Price");
+		  for(int i = 0; i < items.getBooks().size(); i++)
+		  {
+			  String title = items.getBooks().get(i).getTitle();
+			  String author = items.getBooks().get(i).getAuthor();
+			  double price = items.getBooks().get(i).getPrice();
+			  String category = items.getBooks().get(i).getCategory();
+			  int j = i + 1; 
+			  
+			  System.out.println(title + "  " + author + "  " + category + "  " + price); 
+		  }
+		  
+		  for(int i = 0; i < options.size(); i++)
+		  {
+			  int j = i + 1; 
+			  System.out.println(j + ". " + options.get(i));
+		  }
+		  
+		  int input = scanner.nextInt();
+		    System.out.println("\n"); 
+		  return input; 
+
 	  }
 	  
 	  /*
@@ -168,7 +192,24 @@ public class View {
 	   */
 	  int removeOption(Cart items)
 	  {
-		  return 333; 
+		  System.out.println("Please select an item to remove: ");
+		  System.out.println("Number  Title                                      Author            Category           Price");
+		  System.out.println("0. Return to main menu");
+		  for(int i = 0; i < items.getBooks().size(); i++)
+		  {
+			  String title = items.getBooks().get(i).getTitle();
+			  String author = items.getBooks().get(i).getAuthor();
+			  double price = items.getBooks().get(i).getPrice();
+			  String category = items.getBooks().get(i).getCategory();
+			  int j = i + 1; 
+			  
+			  System.out.println(j + ". " + title + "  " + author + "  " + category + "  " + price); 
+		  }
+		  
+	
+		  int input = scanner.nextInt();
+		    System.out.println("\n"); 
+		  return input; 
 	  }
 	  
 	  /*
