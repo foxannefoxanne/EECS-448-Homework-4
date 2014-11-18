@@ -72,21 +72,50 @@ public class View {
 	  int displayBooks(List<Book> books)
 	  {
 		  int input = -1;
-
+		  
+		  int titleSize = maxSize(books,1);
+		  int authorSize = maxSize(books,2); 
+		  int categorySize = maxSize(books,3); 
+		  
+		  int titleHeader = titleSize - 1; 
+		  int authorHeader = authorSize - 3; 
+		  int categoryHeader = categorySize - 6;
+				  
+		  String titleSpace = String.format("%" + titleHeader+ "s", " "); 
+		  String authorSpace = String.format("%" + authorHeader + "s", " "); 
+		  String categorySpace = String.format("%" + categoryHeader + "s", " ");
+		  
 		  // will only pass in a list of books, so format as needed (need to ensure spacing is ok)
 		  System.out.println("Select a book or press 0 to return to main menu:");
-		  System.out.println("Number  Title                                      Author            Category           Price");
-		  System.out.println("0.      Return to main menu"); 
+		  System.out.println("Number " + "Title" + titleSpace + "Author" + authorSpace + "Category" +categorySpace +  " Price");
+		
 		  for(int i = 0; i < books.size(); i++)
 		  {
 			  String title = books.get(i).getTitle();
 			  String author = books.get(i).getAuthor();
 			  double price = books.get(i).getPrice();
 			  String category = books.get(i).getCategory();
+			  
 			  int j = i + 1; 
 			  
-			  System.out.println(j + ".      " + title + "  " + author + "  " + category + "  " + price); 
+			  int titleAlignment = titleSize + 3 - books.get(i).getTitle().length();
+			  int authorAlignment = authorSize + 3 - books.get(i).getAuthor().length();
+			  int categoryAlignment = categorySize + 3 - books.get(i).getCategory().length();
+			  
+			  titleSpace = String.format("%" + titleAlignment + "s", " "); 
+			  authorSpace = String.format("%" + authorAlignment + "s", " "); 
+			  categorySpace = String.format("%" + categoryAlignment + "s", " ");
+			  
+			  if(i < 9)
+			  System.out.println("0" + j + ".     " + title + titleSpace + author + authorSpace + category + categorySpace + "$" + price + "0"); 
+			  
+			  else 
+				 System.out.println(j + ".     " + title + titleSpace + author + authorSpace + category + categorySpace+ "$" + price + "0"); 
+			  
+			  titleAlignment = 0; 
 		  }
+		  System.out.println("00.     Return to main menu"); 
+		  
 		  try
 		  {
 		  	input = scanner.nextInt();
@@ -112,8 +141,24 @@ public class View {
 		  int input = -1;
 
 		  System.out.println("Please review your shopping cart:");
-		  System.out.println("Total Amount Owed: " + items.getTotalPrice());
-		  System.out.println("Number  Title                                      Author            Category           Price");
+		  System.out.println("Total: " + items.getTotalPrice() + "\n");
+		  
+		  
+		  int titleSize = maxSize(items.getBooks(),1);
+		  int authorSize = maxSize(items.getBooks(),2); 
+		  int categorySize = maxSize(items.getBooks(),3); 
+		  
+		  int titleHeader = titleSize - 2; 
+		  int authorHeader = authorSize - 3; 
+		  int categoryHeader = categorySize - 6;
+				  
+		  String titleSpace = String.format("%" + titleHeader+ "s", " "); 
+		  String authorSpace = String.format("%" + authorHeader + "s", " "); 
+		  String categorySpace = String.format("%" + categoryHeader + "s", " ");
+		  
+		  
+		  System.out.println("Title" + titleSpace + "Author" + authorSpace + "Category" +categorySpace +  " Price");
+		  
 		  for(int i = 0; i < items.getBooks().size(); i++)
 		  {
 			  String title = items.getBooks().get(i).getTitle();
@@ -122,13 +167,22 @@ public class View {
 			  String category = items.getBooks().get(i).getCategory();
 			  int j = i + 1; 
 			  
-			  System.out.println(title + "  " + author + "  " + category + "  " + price); 
+			  int titleAlignment = titleSize + 3 - items.getBooks().get(i).getTitle().length();
+			  int authorAlignment = authorSize + 3 - items.getBooks().get(i).getAuthor().length();
+			  int categoryAlignment = categorySize + 3 - items.getBooks().get(i).getCategory().length();
+			  
+			  titleSpace = String.format("%" + titleAlignment + "s", " "); 
+			  authorSpace = String.format("%" + authorAlignment + "s", " "); 
+			  categorySpace = String.format("%" + categoryAlignment + "s", " ");
+			 
+			  System.out.println(title + titleSpace + author + authorSpace + category + categorySpace+ "$" + price + "0"); 
 		  }
 		  
+		  System.out.println(" "); 
 		  for(int i = 0; i < options.size(); i++)
 		  {
 			  int j = i + 1; 
-			  System.out.println(j + ". " + options.get(i));
+			  System.out.println(options.get(i));
 		  }
 		  
 		  try
@@ -154,11 +208,25 @@ public class View {
 	  int removeOption(Cart items)
 	  {
 		  int input = -1;
-
+		  int titleSize = maxSize(items.getBooks(),1);
+		  int authorSize = maxSize(items.getBooks(),2); 
+		  int categorySize = maxSize(items.getBooks(),3); 
+		  
+		  int titleHeader = titleSize - 1; 
+		  int authorHeader = authorSize - 3; 
+		  int categoryHeader = categorySize - 6;
+				  
+		  String titleSpace = String.format("%" + titleHeader+ "s", " "); 
+		  String authorSpace = String.format("%" + authorHeader + "s", " "); 
+		  String categorySpace = String.format("%" + categoryHeader + "s", " ");
+		  
+	
+		  
 		  System.out.println("Please select an item to remove: ");
-		  System.out.println("Number  Title                                      Author            Category           Price");
-		  // maybe print this at the end of the list?
-		  System.out.println("0. Return to main menu");
+		  System.out.println("Number " + "Title" + titleSpace + "Author" + authorSpace + "Category" +categorySpace +  " Price");
+		  
+		 
+		
 		  // check for empty cart?
 		  for(int i = 0; i < items.getBooks().size(); i++)
 		  {
@@ -168,8 +236,26 @@ public class View {
 			  String category = items.getBooks().get(i).getCategory();
 			  int j = i + 1; 
 			  
-			  System.out.println(j + ". " + title + "  " + author + "  " + category + "  " + price); 
+			  int titleAlignment = titleSize + 3 - items.getBooks().get(i).getTitle().length();
+			  int authorAlignment = authorSize + 3 - items.getBooks().get(i).getAuthor().length();
+			  int categoryAlignment = categorySize + 3 - items.getBooks().get(i).getCategory().length();
+			  
+			  titleSpace = String.format("%" + titleAlignment + "s", " "); 
+			  authorSpace = String.format("%" + authorAlignment + "s", " "); 
+			  categorySpace = String.format("%" + categoryAlignment + "s", " ");
+			  
+			  if(i < 9)
+			  System.out.println("0" + j + ".     " + title + titleSpace + author + authorSpace + category + categorySpace + "$" + price + "0"); 
+			  
+			  else 
+				 System.out.println(j + ".     " + title + titleSpace + author + authorSpace + category + categorySpace+ "$" + price + "0"); 
+			  
+			  titleAlignment = 0; 
+			
 		  }
+		  
+		  
+		  System.out.println("00.     Return to main menu");
 		  
 		  try
 		  {
@@ -199,7 +285,7 @@ public class View {
 	   */
 	  public void displayInvalidSelection() 
 	  {
-		  System.out.println("Please enter one of the numbers listed."); 
+		  System.out.println("\nPlease enter one of the numbers listed."); 
 	  }
 	  
 	  /*
@@ -207,18 +293,43 @@ public class View {
 	   */
 	  public void displaySuccessfullyAdded()
 	  {
-		  System.out.println("Book added to cart"); 
+		  System.out.print("Book added to cart \n"); 
 	  }
 
 	  public void displaySuccessfullyRemoved() {
 		// TODO Auto-generated method stub
-		
+		System.out.print("Book removed from cart \n"); 
+		  
 	  }
 
 	  public void welcomeMessage() {
 		// TODO Auto-generated method stub
-		
+		System.out.println("Welcome to our bookstore!");
+	  }
+
+	  public int maxSize(List<Book> books, int request)
+	  {
+		  int biggest = 0;
+		  int length = 0;
+		  for(int i = 0; i < books.size(); i++)
+		  {
+			  if(request == 1)
+				 length = books.get(i).getTitle().length(); 
+			  
+			  else if(request == 2)
+				  length = books.get(i).getAuthor().length();
+			  
+			  else
+				  length = books.get(i).getCategory().length();
+			  
+			  if (biggest < length)
+				  biggest = length; 
+		  }
+		  
+		return biggest; 
 	  }
 	  
-	  
-	}
+	 
+}
+
+
