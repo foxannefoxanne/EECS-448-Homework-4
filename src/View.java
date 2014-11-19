@@ -79,7 +79,7 @@ public class View {
 		  
 		  int titleHeader = titleSize - 1; 
 		  int authorHeader = authorSize - 3; 
-		  int categoryHeader = categorySize - 6;
+		  int categoryHeader = categorySize - 5;
 				  
 		  String titleSpace = String.format("%" + titleHeader+ "s", " "); 
 		  String authorSpace = String.format("%" + authorHeader + "s", " "); 
@@ -141,7 +141,7 @@ public class View {
 		  int input = -1;
 
 		  System.out.println("Please review your shopping cart:");
-		  System.out.println("Total: " + items.getTotalPrice() + "\n");
+		  System.out.println("Total: $" + items.getTotalPrice() + "0" + "\n");
 		  
 		  
 		  int titleSize = maxSize(items.getBooks(),1);
