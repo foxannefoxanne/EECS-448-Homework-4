@@ -9,9 +9,9 @@ public class Main {
 		
 		// read all book text files in to model
 		try {
-			fileRead(bookStoreModel, "scifi.txt", "Science Fiction", 50);
-			fileRead(bookStoreModel, "travelbooks.txt", "Travel", 40);
-			fileRead(bookStoreModel, "softwarebooks.txt", "Computer Science", 100);
+			fileRead(bookStoreModel, "Resource/scifi.txt", "Science Fiction", 50);
+			fileRead(bookStoreModel, "Resource/travelbooks.txt", "Travel", 40);
+			fileRead(bookStoreModel, "Resource/softwarebooks.txt", "Computer Science", 100);
 		}
 		catch(IOException e) {
 			System.out.println(e.getMessage());
