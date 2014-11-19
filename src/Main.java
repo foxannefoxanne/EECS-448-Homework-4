@@ -1,3 +1,11 @@
+/*
+ * EECS 448
+ * HW 4
+ * 2014.11.19
+ * Lynne Lammers, Christine Perinchery, Roxanne Calderon
+ * Main.java
+ */
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

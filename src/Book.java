@@ -1,3 +1,10 @@
+/*
+ * EECS 448
+ * HW 4
+ * 2014.11.19
+ * Lynne Lammers, Christine Perinchery, Roxanne Calderon
+ * Book.java
+ */
 
 public class Book {
 	private String title;

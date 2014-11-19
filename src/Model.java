@@ -1,3 +1,11 @@
+/*
+ * EECS 448
+ * HW 4
+ * 2014.11.19
+ * Lynne Lammers, Christine Perinchery, Roxanne Calderon
+ * Model.java
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +16,9 @@ public class Model
 	private Category computerScienceBooks;
 	private Cart cart;
 	
+	/*
+	 * Constructor
+	 */
 	public Model(){
 		cart = new Cart();
 		sciFiBooks = new Category();
@@ -22,18 +33,34 @@ public class Model
 		
 	}
 	
+	/*
+	 * Adds book to cart
+	 * @param book: Book to add to cart
+	 */
 	public void addToCart(Book book){
 		cart.addBook(book);
 	}
 	
+	/*
+	 * Removes book from cart
+	 * @param book: Book to remove from cart
+	 */
 	public void removeFromCart(Book book){
 		cart.removeBook(book);
 	}
 	
+	/*
+	 * Gets price of cart
+	 * @return: price
+	 */
 	private double getTotalPrice(){
 		return cart.getTotalPrice();
 	}
 	
+	/*
+	 * Adds book to inventory based on its category
+	 * @param book: Book to add to inventory
+	 */
 	public void addToInventory(Book book){
 		String category = book.getCategory();
 		switch(category){
@@ -49,6 +76,10 @@ public class Model
 		}
 	}
 	
+	/*
+	 * Gets all books in inventory
+	 * @return: list of books
+	 */
 	public List<Book> getAllBooks() {
 		List<Book> allBooks = new ArrayList<Book>();
 		allBooks.addAll(sciFiBooks.getBooks());
@@ -57,6 +88,11 @@ public class Model
 		return allBooks;
 	}
 	
+	/*
+	 * Gets books for a specified category
+	 * @param categoryName: Category to get books from
+	 * @return: list of books
+	 */
 	public List<Book> getBooks(String categoryName){
 		switch(categoryName){
 		case "Science Fiction":
@@ -70,6 +106,10 @@ public class Model
 		}
 	}
 	
+	/*
+	 * Gets names of categories in inventory
+	 * @return: list of category names
+	 */
 	public List<String> getCategoryNames() {
 		List<String> categoryNames =  new ArrayList<String>();
 		categoryNames.add(sciFiBooks.getName());
@@ -78,6 +118,10 @@ public class Model
 		return categoryNames;
 	}
 	
+	/*
+	 * Gets user's cart
+	 * @return cart
+	 */
 	public Cart getCart() {
 		return cart;
 	}
