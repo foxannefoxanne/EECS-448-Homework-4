@@ -5,28 +5,28 @@ public class Book {
 	private double price;
 	private String category; 
 	
-	public String getTitle(){
+	public String getTitle() {
 		return title;
 	}
-	public void setTitle(String t){
+	public void setTitle(String t) {
 		title = t;
 	}	
-	public String getAuthor(){
+	public String getAuthor() {
 		return author;
 	}	
-	public void setAuthor(String a){
+	public void setAuthor(String a) {
 		author = a;
 	}	
 	public double getPrice(){
 		return price;
 	}	
-	public void setPrice(double p){
+	public void setPrice(double p) {
 		price = p;
 	}
-	public String getCategory(){
+	public String getCategory() {
 		return category;
 	}	
-	public void setCategory(String c){
+	public void setCategory(String c) {
 		category = c;
 	}
 }

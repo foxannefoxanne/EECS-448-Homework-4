@@ -6,14 +6,12 @@ public class Cart {
 	private List<Book> bookList;
 	private double totalPrice;
 	
-	// default constructor
-	public Cart() 
-	{
+	public Cart() {
 		totalPrice = 0;
 		bookList = new ArrayList<Book>();
 	}
 	
-	public List<Book> getBooks(){
+	public List<Book> getBooks() {
 		return bookList;
 	}
 	
@@ -21,7 +19,7 @@ public class Cart {
 		return totalPrice;
 	}
 	
-	public void addBook(Book book){
+	public void addBook(Book book) {
 		bookList.add(book);
 		totalPrice += book.getPrice();
 	}

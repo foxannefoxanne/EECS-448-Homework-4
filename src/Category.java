@@ -8,27 +8,27 @@ public class Category {
 	private String name;
 	private double categoryPrice;
 	
-	public Category(){
+	public Category() {
 		bookList = new ArrayList<Book>();
 	}
 	
-	public String getName(){
+	public String getName() {
 		return name;
 	}	
-	public void setName(String n){
+	public void setName(String n) {
 		name = n;
 	}	
-	public double getCategoryPrice(){
+	public double getCategoryPrice() {
 		return categoryPrice;
 	}	
-	public void setCategoryPrice(double c){
+	public void setCategoryPrice(double c) {
 		categoryPrice = c;
 	}	
-	public List<Book> getBooks(){
+	public List<Book> getBooks() {
 		return bookList;
 	}	
 	
-	public void addBook(Book book){
+	public void addBook(Book book) {
 		bookList.add(book);
 	}
 

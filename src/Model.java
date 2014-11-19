@@ -8,7 +8,6 @@ public class Model
 	private Category computerScienceBooks;
 	private Cart cart;
 	
-	// should we initialize the names of the categories here?
 	public Model(){
 		cart = new Cart();
 		sciFiBooks = new Category();
@@ -50,7 +49,6 @@ public class Model
 		}
 	}
 	
-	// return books from all categories (i.e. all of inventory)
 	public List<Book> getAllBooks() {
 		List<Book> allBooks = new ArrayList<Book>();
 		allBooks.addAll(sciFiBooks.getBooks());
