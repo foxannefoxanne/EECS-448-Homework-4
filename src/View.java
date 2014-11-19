@@ -8,24 +8,26 @@ public class View {
     Scanner scanner = new Scanner( System.in );
 
 
-	  int displayMenu(List<String> options)
-	  {
-		  //might modify for less hardcoded lines of books. 
+       /*
+        * List is passed in from model. This list will contain a main menu category.
+        * @return: number of category selected (i.e. 1 for first category listed)
+        * 			or 0 to return to main menu
+        */
+	  int displayMenu(List<String> options){
 		  int input = -1;
-		  for(int i = 0; i < options.size(); i++)
-		  {
+		  
+		  for(int i = 0; i < options.size(); i++){
 			  int j = i + 1; 
 			  System.out.println(options.get(i));
 		  }
 		  
-		  try
-		  {
+		  //check for non-integer input. 
+		  try{
 		  	input = scanner.nextInt();
 		    System.out.println("\n"); 
 		  
 		  }
-		  catch(InputMismatchException exception)
-		  {
+		  catch(InputMismatchException exception){
 
 			  scanner.next();
 			  	input = -1; 
@@ -34,30 +36,27 @@ public class View {
 	  }
 	  
 	  /*
+	   * Display three categories, and let user select which to be viewed.
 	   * @return: number of category selected (i.e. 1 for first category listed)
 	   * 			or 0 to return to main menu
 	   */
-	  int displayCategories(List<String> categoryNames)
-	  {
-		  // strings in list will ONLY be category names (not numbers)
-		  // include option to return to main menu by entering 0
-		
+	  int displayCategories(List<String> categoryNames){
+		 
 		  int input = -1;
-		  System.out.println("Select a category or press 0 to retun to main menu:");
+		  
+		  System.out.println("Select a category:");
 		  System.out.println("0. Return to main menu"); 
-		  for(int i = 0; i < categoryNames.size(); i++)
-		  {
+		  for(int i = 0; i < categoryNames.size(); i++){
 			  int j = i + 1; 
 			  System.out.println(j + ". " + categoryNames.get(i)); 
 		  }
-		  try
-		  {
+		  
+		  try{
 		  	input = scanner.nextInt();
 		    System.out.println("\n"); 
-		  
 		  }
-		  catch(InputMismatchException exception)
-		  {
+		  
+		  catch(InputMismatchException exception){
 
 			  scanner.next();
 			  	input = -1; 
@@ -66,6 +65,7 @@ public class View {
 	  }
 	  
 	  /*
+	   * Print list of books with formatting.
 	   * @return: number of book selected (i.e. 1 for first book listed)
 	   * 			or 0 to return to main menu
 	   */
@@ -73,24 +73,27 @@ public class View {
 	  {
 		  int input = -1;
 		  
+		  //retrieve largest title, author and category.
 		  int titleSize = maxSize(books,1);
 		  int authorSize = maxSize(books,2); 
 		  int categorySize = maxSize(books,3); 
 		  
+		  //align heading with passed in books books. 
 		  int titleHeader = titleSize - 1; 
 		  int authorHeader = authorSize - 3; 
 		  int categoryHeader = categorySize - 5;
 				  
+		  //format spacing. 
 		  String titleSpace = String.format("%" + titleHeader+ "s", " "); 
 		  String authorSpace = String.format("%" + authorHeader + "s", " "); 
 		  String categorySpace = String.format("%" + categoryHeader + "s", " ");
 		  
-		  // will only pass in a list of books, so format as needed (need to ensure spacing is ok)
 		  System.out.println("Select a book or press 0 to return to main menu:");
 		  System.out.println("Number " + "Title" + titleSpace + "Author" + authorSpace + "Category" +categorySpace +  " Price");
 		
-		  for(int i = 0; i < books.size(); i++)
-		  {
+		  for(int i = 0; i < books.size(); i++){
+			  
+			  //retrieve book data.
 			  String title = books.get(i).getTitle();
 			  String author = books.get(i).getAuthor();
 			  double price = books.get(i).getPrice();
@@ -98,43 +101,41 @@ public class View {
 			  
 			  int j = i + 1; 
 			  
+			  //align depending on character length of individual books. 
 			  int titleAlignment = titleSize + 3 - books.get(i).getTitle().length();
 			  int authorAlignment = authorSize + 3 - books.get(i).getAuthor().length();
 			  int categoryAlignment = categorySize + 3 - books.get(i).getCategory().length();
 			  
+			  //format spacing.
 			  titleSpace = String.format("%" + titleAlignment + "s", " "); 
 			  authorSpace = String.format("%" + authorAlignment + "s", " "); 
 			  categorySpace = String.format("%" + categoryAlignment + "s", " ");
 			  
+			  //add zeros if less than 10 so numbers align.  
 			  if(i < 9)
-			  System.out.println("0" + j + ".     " + title + titleSpace + author + authorSpace + category + categorySpace + "$" + price + "0"); 
-			  
+				  System.out.println("0" + j + ".     " + title + titleSpace + author + authorSpace + category + categorySpace + "$" + price + "0"); 
 			  else 
-				 System.out.println(j + ".     " + title + titleSpace + author + authorSpace + category + categorySpace+ "$" + price + "0"); 
-			  
-			  titleAlignment = 0; 
+				  System.out.println(j + ".     " + title + titleSpace + author + authorSpace + category + categorySpace+ "$" + price + "0"); 
 		  }
 		  System.out.println("00.     Return to main menu"); 
 		  
-		  try
-		  {
+		  try{
 		  	input = scanner.nextInt();
-		    System.out.println("\n"); 
-		  
 		  }
-		  catch(InputMismatchException exception)
-		  {
+		  catch(InputMismatchException exception){
 
 			  scanner.next();
 			  	input = -1; 
 		  }
 		  return input; 
-
 	  }
 	  
 	  /*
+	   * Display all items in cart. Formatted similarly to displayBooks. 
 	   * @param items: Cart that contains list of books plus the total price
 	   * @param options: List of options for how to proceed (check out, remove item, return to main menu)
+	   * @return: integer for menu items
+	   * 			or 0 to return to main menu
 	   */
 	  int displayCart(Cart items, List<String> options)
 	  {
@@ -142,7 +143,6 @@ public class View {
 
 		  System.out.println("Please review your shopping cart:");
 		  System.out.println("Total: $" + items.getTotalPrice() + "0" + "\n");
-		  
 		  
 		  int titleSize = maxSize(items.getBooks(),1);
 		  int authorSize = maxSize(items.getBooks(),2); 
@@ -155,12 +155,10 @@ public class View {
 		  String titleSpace = String.format("%" + titleHeader+ "s", " "); 
 		  String authorSpace = String.format("%" + authorHeader + "s", " "); 
 		  String categorySpace = String.format("%" + categoryHeader + "s", " ");
-		  
-		  
+		  	  
 		  System.out.println("Title" + titleSpace + "Author" + authorSpace + "Category" +categorySpace +  " Price");
 		  
-		  for(int i = 0; i < items.getBooks().size(); i++)
-		  {
+		  for(int i = 0; i < items.getBooks().size(); i++){
 			  String title = items.getBooks().get(i).getTitle();
 			  String author = items.getBooks().get(i).getAuthor();
 			  double price = items.getBooks().get(i).getPrice();
@@ -179,29 +177,25 @@ public class View {
 		  }
 		  
 		  System.out.println(" "); 
-		  for(int i = 0; i < options.size(); i++)
-		  {
+		  for(int i = 0; i < options.size(); i++){
 			  int j = i + 1; 
 			  System.out.println(options.get(i));
 		  }
 		  
-		  try
-		  {
-		  	input = scanner.nextInt();
+		  try{
+		 	input = scanner.nextInt();
 		    System.out.println("\n"); 
 		  
 		  }
-		  catch(InputMismatchException exception)
-		  {
-
-			  scanner.next();
+		  catch(InputMismatchException exception){
+			  	scanner.next();
 			  	input = -1; 
 		  }
 		  return input; 
-
 	  }
 	  
 	  /*
+	   * Option to remove certain book from cart. Formatted similar to display books. 
 	   * Display cart and prompt for which item to remove
 	   * @return int: either item number in cart (i.e. 1 for first item) or 0 to cancel
 	   */
@@ -219,17 +213,11 @@ public class View {
 		  String titleSpace = String.format("%" + titleHeader+ "s", " "); 
 		  String authorSpace = String.format("%" + authorHeader + "s", " "); 
 		  String categorySpace = String.format("%" + categoryHeader + "s", " ");
-		  
-	
-		  
+		 
 		  System.out.println("Please select an item to remove: ");
 		  System.out.println("Number " + "Title" + titleSpace + "Author" + authorSpace + "Category" +categorySpace +  " Price");
 		  
-		 
-		
-		  // check for empty cart?
-		  for(int i = 0; i < items.getBooks().size(); i++)
-		  {
+		  for(int i = 0; i < items.getBooks().size(); i++){
 			  String title = items.getBooks().get(i).getTitle();
 			  String author = items.getBooks().get(i).getAuthor();
 			  double price = items.getBooks().get(i).getPrice();
@@ -246,26 +234,16 @@ public class View {
 			  
 			  if(i < 9)
 			  System.out.println("0" + j + ".     " + title + titleSpace + author + authorSpace + category + categorySpace + "$" + price + "0"); 
-			  
 			  else 
 				 System.out.println(j + ".     " + title + titleSpace + author + authorSpace + category + categorySpace+ "$" + price + "0"); 
-			  
-			  titleAlignment = 0; 
-			
-		  }
-		  
+			 }
 		  
 		  System.out.println("00.     Return to main menu");
 		  
-		  try
-		  {
+		  try{
 		  	input = scanner.nextInt();
-		    System.out.println("\n"); 
-		  
 		  }
-		  catch(InputMismatchException exception)
-		  {
-
+		  catch(InputMismatchException exception){
 			  scanner.next();
 			  	input = -1; 
 		  }
@@ -273,46 +251,41 @@ public class View {
 	  }
 	  
 	  /*
-	   * Display message that check out was successful, etc.
+	   * Display message that check out was successful
 	   */
-	  public void displayCheckOutMessage()
-	  {
+	  public void displayCheckOutMessage(){
 		  System.out.println("Thank you for shopping with us today! Your payment is being processed!"); 
 	  }
 	  
 	  /*
 	   * Displays message that option selected was invalid
 	   */
-	  public void displayInvalidSelection() 
-	  {
+	  public void displayInvalidSelection(){
 		  System.out.println("\nPlease enter one of the numbers listed."); 
 	  }
 	  
 	  /*
 	   * Displays message that book was successfully added to cart
 	   */
-	  public void displaySuccessfullyAdded()
-	  {
-		  System.out.print("Book added to cart \n"); 
+	  public void displaySuccessfullyAdded(){
+		  System.out.println("Book added to cart \n"); 
 	  }
 
 	  public void displaySuccessfullyRemoved() {
-		// TODO Auto-generated method stub
-		System.out.print("Book removed from cart \n"); 
-		  
+		System.out.println("Book removed from cart \n");   
 	  }
 
+	  
 	  public void welcomeMessage() {
-		// TODO Auto-generated method stub
 		System.out.println("Welcome to our bookstore!");
 	  }
 
+	  
 	  public int maxSize(List<Book> books, int request)
 	  {
 		  int biggest = 0;
 		  int length = 0;
-		  for(int i = 0; i < books.size(); i++)
-		  {
+		  for(int i = 0; i < books.size(); i++){
 			  if(request == 1)
 				 length = books.get(i).getTitle().length(); 
 			  
@@ -325,11 +298,8 @@ public class View {
 			  if (biggest < length)
 				  biggest = length; 
 		  }
-		  
 		return biggest; 
-	  }
-	  
-	 
+	  } 
 }
 
 
