@@ -6,12 +6,11 @@ public class Main {
 	public static void main (String[] args) 
 	{ 
 		Model bookStoreModel = new Model();
+		
+		// read all book text files in to model
 		try {
 			fileRead(bookStoreModel, "scifi.txt", "Science Fiction", 50);
-			//bookStoreModel.getBooks("Science Fiction");
 			fileRead(bookStoreModel, "travelbooks.txt", "Travel", 40);
-			//bookStoreModel.getBooks("Science Fiction");
-			//bookStoreModel.getBooks("Travel");
 			fileRead(bookStoreModel, "softwarebooks.txt", "Computer Science", 100);
 		}
 		catch(IOException e) {
@@ -21,9 +20,14 @@ public class Main {
 		View bookStoreView = new View();
 		
         Controller bookStoreController = new Controller(bookStoreModel, bookStoreView);
+        
+        // start controller
         bookStoreController.control();
 	}
 	
+	/*
+	 * Helper function to read books into model inventory from text file
+	 */
 	public static void fileRead(Model model, String filePath, String category, double price) throws IOException
 	{
 		FileReader fin = new FileReader(filePath);
